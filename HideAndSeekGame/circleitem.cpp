@@ -17,17 +17,7 @@ circleItem::circleItem():
 }
 void circleItem::keyPressEvent(QKeyEvent *event)
 {
-/*
-    if(event->key() == Qt::Key_Left){
-        setPos(x()-10,y());
-    }else if(event->key() == Qt::Key_Right){
-        setPos(x()+10,y());
-    }else if(event->key() == Qt::Key_Up){
-        setPos(x(),y()-10);
-    }else if(event->key() == Qt::Key_Down){
-        setPos(x(),y()+10);
-    }
-*/
+
     qreal x = 0;
     qreal y = 0;
     qreal step = 10;
