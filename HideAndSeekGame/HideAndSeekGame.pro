@@ -9,23 +9,15 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    circleitem.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    scene.cpp
+    MyPlayer1.cpp \
+    MyPlayer2.cpp \
+    main.cpp
 
 HEADERS += \
-    circleitem.h \
-    mainwindow.h \
-    scene.h
-
-FORMS += \
-    mainwindow.ui
+    MyPlayer1.h \
+    MyPlayer2.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    Resources.qrc
