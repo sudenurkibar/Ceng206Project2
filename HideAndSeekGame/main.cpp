@@ -1,6 +1,7 @@
 
 #include <QApplication>
 #include "Game.h"
+#include <QGraphicsOpacityEffect>
 
 /*
 Tutorial Topics:

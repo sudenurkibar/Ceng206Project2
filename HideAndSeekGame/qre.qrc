@@ -3,8 +3,10 @@
         <file>images/picture.jpg</file>
         <file>images/ghost.png</file>
         <file>images/bullet.png</file>
-        <file>images/enemy1.png</file>
         <file>images/enemy2.png</file>
+        <file>images/bat.png</file>
+        <file>images/pumpkin.png</file>
+        <file>images/background.jpg</file>
     </qresource>
     <qresource prefix="/musics">
         <file>sounds.mp3</file>

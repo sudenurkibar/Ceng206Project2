@@ -20,7 +20,7 @@ Enemy::Enemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem()
     setPos(random_number,0);
 
     //drew the rect
-    setPixmap(QPixmap(":/image/images/enemy1.png"));
+    setPixmap(QPixmap(":/image/images/pumpkin.png"));
     //Alaşağı ediyor fotoğrafı
     /*setTransformOriginPoint(50,50);
     setRotation(180);*/

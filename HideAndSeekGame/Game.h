@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Score.h"
 #include "Health.h"
+#include <QGraphicsOpacityEffect>
 
 class Game: public QGraphicsView
 {

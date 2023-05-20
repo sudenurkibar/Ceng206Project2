@@ -154,11 +154,13 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_qre.cpp
 debug/qrc_qre.cpp: ../HideAndSeekGame/qre.qrc \
 		C:/Qt/6.5.0/mingw_64/bin/rcc.exe \
+		../HideAndSeekGame/images/pumpkin.png \
 		../HideAndSeekGame/images/ghost.png \
 		../HideAndSeekGame/images/enemy2.png \
+		../HideAndSeekGame/images/bat.png \
 		../HideAndSeekGame/images/picture.jpg \
-		../HideAndSeekGame/images/enemy1.png \
 		../HideAndSeekGame/images/bullet.png \
+		../HideAndSeekGame/images/background.jpg \
 		../HideAndSeekGame/sounds.mp3
 	C:\Qt\6.5.0\mingw_64\bin\rcc.exe -name qre --no-zstd ..\HideAndSeekGame\qre.qrc -o debug\qrc_qre.cpp
 
@@ -1053,7 +1055,9 @@ debug/Bullet.o: ../HideAndSeekGame/Bullet.cpp ../HideAndSeekGame/Bullet.h \
 		../HideAndSeekGame/Player.h \
 		../HideAndSeekGame/Score.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsTextItem \
-		../HideAndSeekGame/Health.h
+		../HideAndSeekGame/Health.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Bullet.o ..\HideAndSeekGame\Bullet.cpp
 
 debug/Enemy.o: ../HideAndSeekGame/Enemy.cpp ../HideAndSeekGame/Enemy.h \
@@ -1236,7 +1240,9 @@ debug/Enemy.o: ../HideAndSeekGame/Enemy.cpp ../HideAndSeekGame/Enemy.h \
 		../HideAndSeekGame/Player.h \
 		../HideAndSeekGame/Score.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsTextItem \
-		../HideAndSeekGame/Health.h
+		../HideAndSeekGame/Health.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Enemy.o ..\HideAndSeekGame\Enemy.cpp
 
 debug/Enemy1.o: ../HideAndSeekGame/Enemy1.cpp ../HideAndSeekGame/Enemy1.h \
@@ -1420,7 +1426,9 @@ debug/Enemy1.o: ../HideAndSeekGame/Enemy1.cpp ../HideAndSeekGame/Enemy1.h \
 		../HideAndSeekGame/Player.h \
 		../HideAndSeekGame/Score.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsTextItem \
-		../HideAndSeekGame/Health.h
+		../HideAndSeekGame/Health.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Enemy1.o ..\HideAndSeekGame\Enemy1.cpp
 
 debug/Game.o: ../HideAndSeekGame/Game.cpp ../HideAndSeekGame/Game.h \
@@ -1599,6 +1607,8 @@ debug/Game.o: ../HideAndSeekGame/Game.cpp ../HideAndSeekGame/Game.h \
 		../HideAndSeekGame/Score.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsTextItem \
 		../HideAndSeekGame/Health.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.5.0/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.5.0/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.5.0/mingw_64/include/QtCore/qbasictimer.h \
@@ -1794,7 +1804,9 @@ debug/Health.o: ../HideAndSeekGame/Health.cpp ../HideAndSeekGame/Health.h \
 		../HideAndSeekGame/Player.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsItem \
-		../HideAndSeekGame/Score.h
+		../HideAndSeekGame/Score.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Health.o ..\HideAndSeekGame\Health.cpp
 
 debug/LightItem.o: ../HideAndSeekGame/LightItem.cpp ../HideAndSeekGame/LightItem.h \
@@ -2904,7 +2916,9 @@ debug/main.o: ../HideAndSeekGame/main.cpp C:/Qt/6.5.0/mingw_64/include/QtWidgets
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsItem \
 		../HideAndSeekGame/Score.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsTextItem \
-		../HideAndSeekGame/Health.h
+		../HideAndSeekGame/Health.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\HideAndSeekGame\main.cpp
 
 debug/qrc_qre.o: debug/qrc_qre.cpp 

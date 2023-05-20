@@ -1,4 +1,4 @@
-#include "Health.h"
+ #include "Health.h"
 #include <QFont>
 #include "QMessageBox"
 #include "Game.h"
@@ -12,7 +12,7 @@ Health :: Health (QGraphicsItem *parent) : QGraphicsTextItem(parent)
     //draw the text
     setPlainText(QString("Health : " + QString:: number(health) )); // Score : 0
     setDefaultTextColor(Qt::green);
-    setFont(QFont("times", 16));
+    setFont(QFont("times", 20));
 }
 
 void Health :: checkGameOver(int currentHealth){

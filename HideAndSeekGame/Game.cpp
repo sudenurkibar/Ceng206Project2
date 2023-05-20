@@ -5,6 +5,9 @@
 #include "Score.h"
 #include <QMediaPlayer>
 #include<QAudioOutput>
+#include <QGraphicsOpacityEffect>
+
+
 Game::Game(QWidget *parent){
     // we write code block  to create a scene
     QGraphicsScene * scene = new QGraphicsScene();
@@ -12,19 +15,30 @@ Game::Game(QWidget *parent){
 
     // create the scene
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1200,800); // make the scene 800x600 instead of infinity by infinity (default)
+    scene->setSceneRect(0,0,1200, 900); // make the scene 800x600 instead of infinity by infinity (default)
 
     // make the newly created scene the scene to visualize (since Game is a QGraphicsView Widget,
     // it can be used to visualize scenes)
     setScene(scene);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setFixedSize(1200,800);
+    setFixedSize(1200,900);
+
+
 
     //background.
-    QPixmap backgroundImage(":image/images/picture.jpg");
-    QBrush backgroundBrush(backgroundImage);
-    scene->setBackgroundBrush(backgroundBrush);
+    QPixmap backgroundImage(":image/images/background.jpg");
+    QGraphicsPixmapItem* backgroundItem = new QGraphicsPixmapItem(backgroundImage);
+    scene->addItem(backgroundItem);
+
+    //Set opacity
+    /*QGraphicsItemGroup* group = new QGraphicsItemGroup();
+    group->addToGroup(backgroundItem);
+    group->setOpacity(1.0); // 0.0 ile 1.0 arasında bir değer verin
+    scene->addItem(group);*/
+
+
+
 
     // create the player
     player = new Player();
@@ -35,6 +49,14 @@ Game::Game(QWidget *parent){
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     // add the player to the scene
+    QGraphicsDropShadowEffect* dropShadowEffect = new QGraphicsDropShadowEffect();
+    dropShadowEffect->setColor(Qt::yellow); // Aydınlatma rengini ayarlayın (burada sarı)
+    dropShadowEffect->setOffset(0, 0); // Aydınlatma offsetini ayarlayın (x, y)
+    dropShadowEffect->setBlurRadius(300); // Aydınlatma bulanıklık yarıçapını ayarlayın (0'dan büyük bir değer)
+    // Player ögesine aydınlatma efektini uygulama
+    player->setGraphicsEffect(dropShadowEffect);
+
+    // Sahneye player ögesini ekleme
     scene->addItem(player);
 
     //create the score
@@ -61,6 +83,8 @@ Game::Game(QWidget *parent){
     music->setSource(QUrl("qrc:/musics/sounds.mp3"));
     audioOutput->setVolume(50);
     music->play();
+
+
 
 
     show();
