@@ -7,12 +7,16 @@ extern Game *game;
 Health :: Health (QGraphicsItem *parent) : QGraphicsTextItem(parent)
 {
     //initialize the score to 0
-    health = 3  ;
+    health = 2  ;
 
     //draw the text
     setPlainText(QString("Health : " + QString:: number(health) )); // Score : 0
     setDefaultTextColor(Qt::green);
     setFont(QFont("times", 20));
+}
+
+Health::~Health()
+{
 }
 
 void Health :: checkGameOver(int currentHealth){

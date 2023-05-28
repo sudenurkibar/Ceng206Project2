@@ -3,12 +3,13 @@
 
 #include <QGraphicsPixmapItem>
 #include <QObject>
-#include<QGraphicsItem>>
+#include <QGraphicsItem>
+#include "Enemy.h"
 
-class Enemy1 : public QObject,  public QGraphicsPixmapItem{
+class Enemy1 : public QObject,  public QGraphicsPixmapItem , public Enemy{
     Q_OBJECT
 public:
-    Enemy1(QGraphicsItem * parent=0);
+    explicit Enemy1(QGraphicsItem *parent = nullptr);
 
 public slots:
     void move1();

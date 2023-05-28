@@ -3,7 +3,7 @@
 #include <QList>
 #include "Enemy.h"
 #include <QGraphicsScene>
-#include "Enemy1.h"
+#include "EnemyChild.h"
 #include "Game.h"
 
 extern Game * game ;// there is an external global object called game
@@ -32,7 +32,7 @@ void Bullet :: move1(){
 
     for(int i = 0 , n = colliding_items.size() ; i<n ; ++i){
 
-        if(typeid(*(colliding_items[i])) == typeid(Enemy1)){
+        if(typeid(*(colliding_items[i])) == typeid(EnemyChild)){
             //increase score
             game->score->increase1();
             //remove them both
@@ -77,6 +77,11 @@ void Bullet::move()
             scene() -> removeItem(this);
             delete this;
     }
+}
+
+bool Bullet::operator==(const Bullet& other) const
+{
+    return (pos() == other.pos());
 }
 
 

@@ -127,6 +127,8 @@ void *Enemy1::qt_metacast(const char *_clname)
         return static_cast<void*>(this);
     if (!strcmp(_clname, "QGraphicsPixmapItem"))
         return static_cast< QGraphicsPixmapItem*>(this);
+    if (!strcmp(_clname, "Enemy"))
+        return static_cast< Enemy*>(this);
     return QObject::qt_metacast(_clname);
 }
 
