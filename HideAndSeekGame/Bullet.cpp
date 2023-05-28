@@ -1,5 +1,5 @@
 #include "Bullet.h"
-#include<QTimer>
+#include <QTimer>
 #include <QList>
 #include "Enemy.h"
 #include <QGraphicsScene>
@@ -14,7 +14,7 @@ Bullet::Bullet(QGraphicsItem *parent):QObject () ,QGraphicsPixmapItem(parent)
     //draw the rect
     setPixmap(QPixmap(":/image/images/bullet.png"));
 
-   //connect
+    //connect
     QTimer * timer = new QTimer();
     connect(timer,SIGNAL(timeout()), this,SLOT(move()));
 
@@ -62,8 +62,6 @@ void Bullet::move()
         if(typeid(*(colliding_items[i])) == typeid(Enemy)){
             //increase score
             game->score->increase();
-
-
              //remove them both
             scene() -> removeItem(colliding_items[i]);
             scene() -> removeItem(this);

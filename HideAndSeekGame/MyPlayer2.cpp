@@ -1,4 +1,4 @@
-#include "MyPlayer2.h"
+include "MyPlayer2.h"
 #include <QKeyEvent>
 #include <QDebug>
 

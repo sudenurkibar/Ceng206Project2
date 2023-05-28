@@ -29,8 +29,6 @@ Enemy::Enemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem()
     QTimer * timer = new QTimer();
     connect(timer,SIGNAL(timeout() ) , this,SLOT(move()));
 
-
-
     timer -> start(200);
 }
 
@@ -44,11 +42,9 @@ void Enemy::move()
             // Player ile çarpışma oldu
             // Sağlık azaltılabilir veya diğer işlemler yapılabilir
             game->health->decrease();
-
             // Enemy'yi sahneden kaldırma
             scene()->removeItem(this);
             delete this;
-
             return; // Çarpışma durumunda fonksiyondan çık
         }
     }
@@ -59,7 +55,6 @@ void Enemy::move()
     if(pos().y() <0){
         //decrease the health
         game->health->decrease();
-
         scene() -> removeItem(this);
         delete this;
     }

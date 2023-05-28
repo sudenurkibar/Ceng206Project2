@@ -3,12 +3,13 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include "Score.h"
-#include <QMediaPlayer>
-#include<QAudioOutput>
 #include <QGraphicsOpacityEffect>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include "Timer.h"
 
-
-Game::Game(QWidget *parent){
+Game::Game(QWidget* parent)
+    : QGraphicsView(parent), timer0(nullptr){
     // we write code block  to create a scene
     QGraphicsScene * scene = new QGraphicsScene();
 
@@ -24,21 +25,10 @@ Game::Game(QWidget *parent){
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1200,900);
 
-
-
     //background.
     QPixmap backgroundImage(":image/images/background.jpg");
     QGraphicsPixmapItem* backgroundItem = new QGraphicsPixmapItem(backgroundImage);
     scene->addItem(backgroundItem);
-
-    //Set opacity
-    /*QGraphicsItemGroup* group = new QGraphicsItemGroup();
-    group->addToGroup(backgroundItem);
-    group->setOpacity(1.0); // 0.0 ile 1.0 arasında bir değer verin
-    scene->addItem(group);*/
-
-
-
 
     // create the player
     player = new Player();
@@ -51,7 +41,7 @@ Game::Game(QWidget *parent){
     // add the player to the scene
     QGraphicsDropShadowEffect* dropShadowEffect = new QGraphicsDropShadowEffect();
     dropShadowEffect->setColor(Qt::yellow); // Aydınlatma rengini ayarlayın (burada sarı)
-    dropShadowEffect->setOffset(0, 0); // Aydınlatma offsetini ayarlayın (x, y)
+    dropShadowEffect->setOffset(0, -50); // Aydınlatma offsetini ayarlayın (x, y)
     dropShadowEffect->setBlurRadius(300); // Aydınlatma bulanıklık yarıçapını ayarlayın (0'dan büyük bir değer)
     // Player ögesine aydınlatma efektini uygulama
     player->setGraphicsEffect(dropShadowEffect);
@@ -67,6 +57,7 @@ Game::Game(QWidget *parent){
     health = new Health();
     health -> setPos(health -> x(), health->y()+25);
     scene-> addItem(health);
+
     // spawn enemies
     QTimer * timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
@@ -84,7 +75,13 @@ Game::Game(QWidget *parent){
     audioOutput->setVolume(50);
     music->play();
 
+    // Create  countdown timer
+    Timer* timer0 = new Timer();
+    timer0->setPos(1040, 0);  // Position the timer at the top right corner
+    scene->addItem(timer0);
 
+    // Connect the countdown timer's timeExpired signal to the gameOver slot
+    connect(timer0, &Timer::timeExpired, this, &Game::gameOver);
 
 
     show();
@@ -92,7 +89,6 @@ Game::Game(QWidget *parent){
 
 void Game::gameOver()
 {
-    // Oyun bittiğinde yapılacak işlemler
 
     // Mevcut sahneyi temizleme
     scene->clear();

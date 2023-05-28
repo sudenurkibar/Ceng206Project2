@@ -1,0 +1,15 @@
+release/Bullet.o
+release/Enemy.o
+release/Enemy1.o
+release/Game.o
+release/Health.o
+release/Player.o
+release/Score.o
+release/Timer.o
+release/main.o
+release/qrc_qre.o
+release/moc_Bullet.o
+release/moc_Enemy.o
+release/moc_Enemy1.o
+release/moc_Player.o
+release/moc_Timer.o

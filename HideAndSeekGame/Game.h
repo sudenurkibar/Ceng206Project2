@@ -7,8 +7,8 @@
 #include "Player.h"
 #include "Score.h"
 #include "Health.h"
+#include "Timer.h"
 #include <QGraphicsOpacityEffect>
-
 class Game: public QGraphicsView
 {
 public:
@@ -22,6 +22,15 @@ public:
 
 
     void gameOver();
+    void startSecondPlayer();
+    void handleKeyPress();
+private:
+    // ...
+    Timer* timer0;
+
+private slots:
+    void handleTimerExpired();
+
 };
 
 #endif // GAME_H
