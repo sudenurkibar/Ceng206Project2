@@ -92,8 +92,8 @@ Game::Game(QWidget* parent)
     music ->setAudioOutput(audioOutput);
     music->setSource(QUrl("qrc:/musics/sounds.mp3"));
     audioOutput->setVolume(50);
-    music->play();
-    */
+    music->play();*/
+
     // Create  countdown timer
     Timer* timer0 = new Timer();
     timer0->setPos(1050, 0);  // Position the timer at the top right corner

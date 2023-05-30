@@ -3,12 +3,12 @@
 #include <QFont>
 #include "Game.h"
 #include <QMessageBox>
-#include <QEventLoop>
+
 
 extern Game *game;
 
 Timer::Timer(QGraphicsItem *parent) : QGraphicsTextItem(parent) {
-    timeCount = 5;
+    timeCount = 60;
     setPlainText(QString("Countdown: ") + QString::number(timeCount));
     setDefaultTextColor(Qt::blue);
     setFont(QFont("times", 20));
@@ -20,22 +20,17 @@ void Timer::timerEvent(QTimerEvent *event) {
     decrease();
 }
 
-void Timer::checkTime(int timeCount1){
-    if (timeCount1 <= 0) {
-        // Oyunu bitirme işlemleri
-        QMessageBox::information(nullptr, "Game Over", "Oyunu Bitirdiniz");
-        game->gameOver(); // Oyunu sıfırlama işlemi
-    }
-}
 
 void Timer::decrease() {
     if (timeCount > 0) {
         timeCount--;
         setPlainText(QString("Countdown: ") + QString::number(timeCount));
-    } else {
-        emit timeExpired();
-        killTimer(timerId);  // Stop the timer when time is up using the stored timer ID
-        checkTime(timeCount)
+        if(timeCount == 0){
+            QMessageBox::information(nullptr, "Game Over", "Congrulations.You win");
+            game->gameOver();
+            emit timeExpired();
+            killTimer(timerId);
+        }
     }
 }
 

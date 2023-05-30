@@ -8,8 +8,8 @@ class Timer : public QGraphicsTextItem {
 public:
     Timer(QGraphicsItem *parent = nullptr);
     void decrease();
-    void checkTime();
     int getTime();
+
 
 protected:
     void timerEvent(QTimerEvent *event) override;
