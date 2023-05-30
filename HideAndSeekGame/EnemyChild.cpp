@@ -7,7 +7,7 @@ extern Game *game;
 EnemyChild::EnemyChild(QGraphicsItem *parent) : Enemy(parent)
 {
     // Farklı bir görsel atanabilir
-    setPixmap(QPixmap(":/image/images/bat.png"));
+    setPixmap(QPixmap(":/images/enemy2.png"));
 }
 
 void EnemyChild::move()
@@ -28,6 +28,4 @@ void EnemyChild::move()
             return; // Çarpışma durumunda fonksiyondan çık
         }
     }
-
-
 }

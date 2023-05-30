@@ -1,11 +1,11 @@
-﻿#include "Game.h"
+#include "Game.h"
 #include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
 #include "Score.h"
 #include <QGraphicsOpacityEffect>
-#include <QMediaPlayer>
-#include <QAudioOutput>
+//#include <QMediaPlayer>
+//#include <QAudioOutput>
 #include "Timer.h"
 
 Game::Game(QWidget* parent)
@@ -16,23 +16,23 @@ Game::Game(QWidget* parent)
 
     // create the scene
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1200, 900); // make the scene 800x600 instead of infinity by infinity (default)
+    scene->setSceneRect(0,0,1417, 794); // make the scene 800x600 instead of infinity by infinity (default)
 
     // make the newly created scene the scene to visualize (since Game is a QGraphicsView Widget,
     // it can be used to visualize scenes)
     setScene(scene);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setFixedSize(1200,900);
+    setFixedSize(1417,794);
 
     //background.
-    QPixmap backgroundImage(":image/images/background.jpg");
+    QPixmap backgroundImage(":/images/background2.png");
     QGraphicsPixmapItem* backgroundItem = new QGraphicsPixmapItem(backgroundImage);
     scene->addItem(backgroundItem);
 
     // create the player
     player = new Player();
-    player-> setPixmap(QPixmap(":/image/images/ghost.png"));
+    player-> setPixmap(QPixmap(":/images/ghost.png"));
 
     player->setPos(400,500); // TODO generalize to always be in the middle bottom of screen
     // make the player focusable and set it to be the current focus
@@ -41,8 +41,8 @@ Game::Game(QWidget* parent)
     // add the player to the scene
     QGraphicsDropShadowEffect* dropShadowEffect = new QGraphicsDropShadowEffect();
     dropShadowEffect->setColor(Qt::yellow); // Aydınlatma rengini ayarlayın (burada sarı)
-    dropShadowEffect->setOffset(0, -50); // Aydınlatma offsetini ayarlayın (x, y)
-    dropShadowEffect->setBlurRadius(300); // Aydınlatma bulanıklık yarıçapını ayarlayın (0'dan büyük bir değer)
+    dropShadowEffect->setOffset(0, -100); // Aydınlatma offsetini ayarlayın (x, y)
+    dropShadowEffect->setBlurRadius(400); // Aydınlatma bulanıklık yarıçapını ayarlayın (0'dan büyük bir değer)
     // Player ögesine aydınlatma efektini uygulama
     player->setGraphicsEffect(dropShadowEffect);
 
@@ -68,16 +68,16 @@ Game::Game(QWidget* parent)
     timer1->start(3000);
 
     // play background music
-    QMediaPlayer* music = new QMediaPlayer();
+   /* QMediaPlayer* music = new QMediaPlayer();
     QAudioOutput* audioOutput = new QAudioOutput();
     music ->setAudioOutput(audioOutput);
     music->setSource(QUrl("qrc:/musics/sounds.mp3"));
     audioOutput->setVolume(50);
     music->play();
-
+    */
     // Create  countdown timer
     Timer* timer0 = new Timer();
-    timer0->setPos(1040, 0);  // Position the timer at the top right corner
+    timer0->setPos(1250, 0);  // Position the timer at the top right corner
     scene->addItem(timer0);
 
     // Connect the countdown timer's timeExpired signal to the gameOver slot
@@ -103,4 +103,3 @@ void Game::gameOver()
     gameOverText->setPos(xPos, yPos);
     scene->addItem(gameOverText);
 }
-

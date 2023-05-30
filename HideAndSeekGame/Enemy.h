@@ -3,7 +3,7 @@
 
 #include <QGraphicsPixmapItem>
 #include <QObject>
-#include<QGraphicsItem>
+#include <QGraphicsItem>
 
 class Enemy : public QObject,  public QGraphicsPixmapItem{
     Q_OBJECT

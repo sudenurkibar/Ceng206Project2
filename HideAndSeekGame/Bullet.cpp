@@ -3,6 +3,7 @@
 #include <QList>
 #include "Enemy.h"
 #include <QGraphicsScene>
+#include "Enemy.h"
 #include "EnemyChild.h"
 #include "Game.h"
 
@@ -12,7 +13,7 @@ extern Game * game ;// there is an external global object called game
 Bullet::Bullet(QGraphicsItem *parent):QObject () ,QGraphicsPixmapItem(parent)
 {
     //draw the rect
-    setPixmap(QPixmap(":/image/images/bullet.png"));
+    setPixmap(QPixmap(":/images/bullet.png"));
 
     //connect
     QTimer * timer = new QTimer();
@@ -62,7 +63,7 @@ void Bullet::move()
         if(typeid(*(colliding_items[i])) == typeid(Enemy)){
             //increase score
             game->score->increase();
-             //remove them both
+                //remove them both
             scene() -> removeItem(colliding_items[i]);
             scene() -> removeItem(this);
             //delete them both
@@ -70,12 +71,12 @@ void Bullet::move()
             delete this;
             return;
         }
-}
+    }
     //move bulletet up
     setPos(x(), y()-10);
     if(pos().y()  < 0 ){
-            scene() -> removeItem(this);
-            delete this;
+        scene() -> removeItem(this);
+        delete this;
     }
 }
 

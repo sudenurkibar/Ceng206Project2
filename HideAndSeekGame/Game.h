@@ -9,6 +9,8 @@
 #include "Health.h"
 #include "Timer.h"
 #include <QGraphicsOpacityEffect>
+#include <QPushButton>
+
 class Game: public QGraphicsView
 {
 public:
@@ -20,17 +22,17 @@ public:
     Score *score;
     Health *health;
 
-
     void gameOver();
     void startSecondPlayer();
     void handleKeyPress();
+
+
 private:
     // ...
     Timer* timer0;
 
 private slots:
     void handleTimerExpired();
-
 };
 
 #endif // GAME_H
