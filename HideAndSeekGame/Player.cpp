@@ -23,7 +23,7 @@ Player::~Player()
 
 void Player::keyPressEvent(QKeyEvent *event)
 {
-    int step = 10; // Hareket adımı
+    int step = 15; // Hareket adımı
 
     // Yön tuşları ile hareket
     if (event->key() == Qt::Key_Up) {
@@ -59,7 +59,7 @@ void Player::keyPressEvent(QKeyEvent *event)
             bullets.pop_back();
             scene()->removeItem(bullet2);
             delete bullet2;
-    }
+        }
     }
 }
 
@@ -84,7 +84,6 @@ void Player::decreaseOpacity(double amount)
     opacityEffect->setOpacity(amount);
     setGraphicsEffect(opacityEffect);
 }
-
 
 
 

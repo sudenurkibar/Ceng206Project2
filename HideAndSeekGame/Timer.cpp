@@ -1,39 +1,30 @@
-#include "timer.h"
+#include "Timer.h"
 #include <QTimer>
 #include <QFont>
-#include <QFontDatabase>
 
-
-Timer::Timer(QGraphicsItem *parent): QGraphicsTextItem(parent){
-
-    // initialize the coinCount to 400
-    timeCount = 5;
-
-    // draw the text
-    int id = QFontDatabase::addApplicationFont(":font/CoinCount2.ttf");
-    QFontDatabase::applicationFontFamilies(id);
-    setPlainText(QString("") + QString::number(timeCount));
-    setDefaultTextColor(Qt::white);
-    setFont(QFont("CoinCount2",30));
-    startTimer(1000);
+Timer::Timer(QGraphicsItem *parent) : QGraphicsTextItem(parent) {
+    timeCount = 120;
+    setPlainText(QString("Countdown: ") + QString::number(timeCount));
+    setDefaultTextColor(Qt::blue);
+    setFont(QFont("times", 20));
+    timerId = startTimer(1000);  // Store the timer ID
 
 }
 
-void Timer::timerEvent(QTimerEvent *){
-
+void Timer::timerEvent(QTimerEvent *event) {
     decrease();
 }
 
-void Timer::decrease(){
-
-    if(0 != timeCount){
+void Timer::decrease() {
+    if (timeCount > 0) {
         timeCount--;
-        setPlainText(QString("") + QString::number(timeCount));
+        setPlainText(QString("Countdown: ") + QString::number(timeCount));
+    } else {
+        emit timeExpired();
+        killTimer(timerId);  // Stop the timer when time is up using the stored timer ID
     }
-
 }
 
-int Timer::getTime(){
+int Timer::getTime() {
     return timeCount;
-
 }

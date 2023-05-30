@@ -20,7 +20,7 @@ Health::~Health()
 }
 
 void Health :: checkGameOver(int currentHealth){
- if (currentHealth <= 0) {
+    if (currentHealth <= 0) {
         // Oyunu bitirme işlemleri
         QMessageBox::information(nullptr, "Game Over", "Health became 0 !");
         game->gameOver(); // Oyunu sıfırlama işlemi

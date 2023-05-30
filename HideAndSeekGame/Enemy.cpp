@@ -8,13 +8,14 @@
 
 extern Game *game;
 extern Player *player;
+
 Enemy::Enemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem()
 {   //set random position
     int random_number = rand() % 1200;
     setPos(random_number,0);
 
     //drew the rect
-    setPixmap(QPixmap(":/image/images/pumpkin.png"));
+    setPixmap(QPixmap(":/images/pumpkin.png"));
     //Alaşağı ediyor fotoğrafı
     /*setTransformOriginPoint(50,50);
     setRotation(180);*/
