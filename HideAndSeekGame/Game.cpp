@@ -16,14 +16,32 @@ Game::Game(QWidget* parent)
 
     // create the scene
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1417, 794); // make the scene 800x600 instead of infinity by infinity (default)
+    //scene->setSceneRect(0,0,1417, 794); // make the scene 800x600 instead of infinity by infinity (default)
+    int screenWidth = 1280; // Ekran genişliği
+    int screenHeight = 720; // Ekran yüksekliği
 
+    int sceneWidth = 1280; // Sahne genişliği
+    int sceneHeight = 720; // Sahne yüksekliği
+
+    // Ekrana sığacak şekilde sahneyi ölçeklendirme
+    if (sceneWidth > screenWidth || sceneHeight > screenHeight) {
+        float widthScale = static_cast<float>(screenWidth) / sceneWidth;
+        float heightScale = static_cast<float>(screenHeight) / sceneHeight;
+        float scale = std::min(widthScale, heightScale);
+        sceneWidth *= scale;
+        sceneHeight *= scale;
+    }
+
+    int sceneX = (screenWidth - sceneWidth) / 2; // Sahnenin yatay konumu
+    int sceneY = (screenHeight - sceneHeight) / 2; // Sahnenin dikey konumu
+
+    scene->setSceneRect(sceneX, sceneY, sceneWidth, sceneHeight);
     // make the newly created scene the scene to visualize (since Game is a QGraphicsView Widget,
     // it can be used to visualize scenes)
     setScene(scene);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setFixedSize(1417,794);
+    setFixedSize(1280,720);
 
     //background.
     QPixmap backgroundImage(":/images/background2.png");
@@ -40,9 +58,10 @@ Game::Game(QWidget* parent)
     player->setFocus();
     // add the player to the scene
     QGraphicsDropShadowEffect* dropShadowEffect = new QGraphicsDropShadowEffect();
-    dropShadowEffect->setColor(Qt::yellow); // Aydınlatma rengini ayarlayın (burada sarı)
-    dropShadowEffect->setOffset(0, -100); // Aydınlatma offsetini ayarlayın (x, y)
-    dropShadowEffect->setBlurRadius(400); // Aydınlatma bulanıklık yarıçapını ayarlayın (0'dan büyük bir değer)
+    dropShadowEffect->setColor(Qt::yellow);
+    dropShadowEffect->setOffset(0, -100);
+    dropShadowEffect->setBlurRadius(400);
+
     // Player ögesine aydınlatma efektini uygulama
     player->setGraphicsEffect(dropShadowEffect);
 
@@ -77,7 +96,7 @@ Game::Game(QWidget* parent)
     */
     // Create  countdown timer
     Timer* timer0 = new Timer();
-    timer0->setPos(1250, 0);  // Position the timer at the top right corner
+    timer0->setPos(1050, 0);  // Position the timer at the top right corner
     scene->addItem(timer0);
 
     // Connect the countdown timer's timeExpired signal to the gameOver slot
@@ -89,7 +108,6 @@ Game::Game(QWidget* parent)
 
 void Game::gameOver()
 {
-
     // Mevcut sahneyi temizleme
     scene->clear();
 
@@ -103,3 +121,4 @@ void Game::gameOver()
     gameOverText->setPos(xPos, yPos);
     scene->addItem(gameOverText);
 }
+
